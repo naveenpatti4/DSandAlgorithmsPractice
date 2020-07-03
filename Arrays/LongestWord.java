@@ -1,6 +1,3 @@
-import java.sql.Time;
-import java.util.TimeZone;
-
 public class LongestWord {
 
 
@@ -15,12 +12,12 @@ Have the function LongestWord(sen) take the sen parameter being passed and retur
         String[] strArry = sen.split(" ");
         // System.out.print(strArry.length);
 
-        for (int i= 0; i < strArry.length; i++ ){
-            for (int j = 1; j< strArry.length; j++){
-                if (strArry[i].length() > strArry[j].length()){
+        for (int i = 0; i < strArry.length; i++) {
+            for (int j = 1; j < strArry.length; j++) {
+                if (strArry[i].length() > strArry[j].length()) {
                     System.out.println(strArry[i]);
                     return strArry[i];
-                }else{
+                } else {
                     System.out.println(strArry[j]);
                     return strArry[j];
                 }
@@ -41,16 +38,16 @@ Have the function LongestWord(sen) take the sen parameter being passed and retur
 
         int ind = 0;
 
-        for (int j = 1; j< strArry.length; j++){
-            if (strArry[j].length() > strArry[ind].length()){
+        for (int j = 1; j < strArry.length; j++) {
+            if (strArry[j].length() > strArry[ind].length()) {
                 ind = j;
             }
         }
         return strArry[ind];
     }
 
-    public static void main (String[] args) {
-       LongestWord("fun&!! time is over");
+    public static void main(String[] args) {
+        LongestWord("fun&!! time is over");
     }
 
 }
