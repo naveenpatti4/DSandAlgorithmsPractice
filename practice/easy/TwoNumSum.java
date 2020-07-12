@@ -1,4 +1,4 @@
-package DSandAlgorithmsPractice.practice;
+package DSandAlgorithmsPractice.practice.easy;
 
 import java.util.Arrays;
 
