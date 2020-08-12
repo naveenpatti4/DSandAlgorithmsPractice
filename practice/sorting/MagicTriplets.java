@@ -24,7 +24,7 @@ public class MagicTriplets {
    }
 
    private static String[] findMagicTriplets(int[] arr){
-      List<String> magicTriplets = new ArrayList<>();
+      Set<String> magicTriplets = new HashSet<>();
       Arrays.sort(arr);
       for(int i = 0; i< arr.length -2 ; i++){
 
@@ -35,7 +35,7 @@ public class MagicTriplets {
             if(currentSum == 0){
                StringBuilder sb = new StringBuilder();
                sb.append(arr[i]).append(",").append(arr[ltPtr]).append(",").append(arr[rtPtr]);
-               if (!magicTriplets.contains(sb.toString()))magicTriplets.add(sb.toString());
+               magicTriplets.add(sb.toString());
                ltPtr ++;
                rtPtr --;
             } else if (currentSum > 0){
