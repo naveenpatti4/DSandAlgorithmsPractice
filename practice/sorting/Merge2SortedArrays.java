@@ -79,6 +79,28 @@ public class Merge2SortedArrays {
       return arr2;
    }
 
+   static void merger_first_into_second(int[] arr1, int[] arr2) {
+      /*
+       * Write your code here.
+       */
+      int i = arr1.length -1;
+      int j = arr1.length -1;
+      int k = arr2.length -1;
+
+      while(i >= 0 && j >= 0){
+         if(arr1[i] > arr2[j]) arr2[k--] = arr1[i--];
+         else arr2[k--] = arr2[j--];
+      }
+
+      while(i >= 0){
+         arr2[k--] = arr1[i--];
+      }
+
+      while(j >= 0) {
+         arr2[k--] = arr2[j--];
+      }
+   }
+
 
 }
 
