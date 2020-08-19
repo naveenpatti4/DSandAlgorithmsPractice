@@ -13,7 +13,7 @@ public class Permutations {
 
    }
 
-   // subsets without duplicates
+   // Permutations without duplicates
    public static List<List<Integer>> permutations(int[] nums) {
       List<List<Integer>> res = new ArrayList<>();
 
