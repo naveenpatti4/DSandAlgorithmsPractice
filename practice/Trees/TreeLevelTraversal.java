@@ -39,6 +39,29 @@ public class TreeLevelTraversal {
       return res;
    }
 
+   //average of each level
+   private static List<Double> bfsAverage(TreeNode root, List<Double> res){
+      if (root == null){
+         return res;
+      }
+
+      Queue<TreeNode> queue = new LinkedList<>();
+      queue.add(root);
+
+      while(!queue.isEmpty()){
+         int numNodes = queue.size();
+         double temp = 0;
+         for (int i = 0; i< numNodes; i++){
+            TreeNode node = queue.poll();
+            temp = temp+node.value;
+            if (node.left != null) queue.add(node.left);
+            if (node.right != null) queue.add(node.right);
+         }
+         res.add(Double.valueOf(temp/numNodes));
+      }
+      return res;
+   }
+
    //tree traversal reverse
    private  List<List<Integer>> bfs(TreeNode root,  List<List<Integer>> result){
       if(root == null) return result;
