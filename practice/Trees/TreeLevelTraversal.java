@@ -114,6 +114,44 @@ public class TreeLevelTraversal {
    }
 
 
+   public List<Integer> rightSideView(TreeNode root) {
+
+      List<Integer> result = new ArrayList<>();
+
+      return bfsr(root, result);
+
+   }
+
+   public List<Integer> bfsr(TreeNode root, List<Integer> result){
+      if(root == null) return result;
+
+      Queue<TreeNode> queue = new ArrayDeque<>();
+
+      queue.add(root);
+
+
+      while(!queue.isEmpty()){
+         int numNodes = queue.size();
+
+         int temp = 0;
+
+         for(int i =0; i< numNodes; i++){
+            TreeNode node = queue.poll();
+            temp = node.value;
+
+            if(node.left != null) queue.add(node.left);
+            if(node.right != null) queue.add(node.right);
+
+         }
+
+         result.add(temp);
+      }
+
+
+      return result;
+   }
+
+
    class TreeNode {
       int value;
       TreeNode left;
