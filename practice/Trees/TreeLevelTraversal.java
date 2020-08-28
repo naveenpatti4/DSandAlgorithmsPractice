@@ -114,6 +114,7 @@ public class TreeLevelTraversal {
    }
 
 
+   //right side view of the tree
    public List<Integer> rightSideView(TreeNode root) {
 
       List<Integer> result = new ArrayList<>();
@@ -147,6 +148,47 @@ public class TreeLevelTraversal {
          result.add(temp);
       }
 
+
+      return result;
+   }
+
+
+   //Zig zag level order traversal
+   public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
+
+      List<List<Integer>> result = new ArrayList<>();
+
+      return bfsz(root, result);
+   }
+
+
+   public List<List<Integer>> bfsz(TreeNode root, List<List<Integer>> result){
+      if(root == null) return result;
+
+      Queue<TreeNode> queue = new ArrayDeque();
+
+      queue.add(root);
+
+      boolean rtol = false;
+
+      while(!queue.isEmpty()){
+         int numNodes = queue.size();
+         List<Integer> temp = new ArrayList<>();
+
+         for(int i =0; i< numNodes; i++){
+            TreeNode node = queue.poll();
+            temp.add(node.value);
+
+            if(node.left != null) queue.add(node.left);
+            if(node.right != null) queue.add(node.right);
+
+         }
+
+         if(rtol) Collections.reverse(temp);
+
+         rtol = !rtol;
+         result.add(temp);
+      }
 
       return result;
    }
