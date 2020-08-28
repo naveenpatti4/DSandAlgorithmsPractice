@@ -88,6 +88,31 @@ public class TreeLevelTraversal {
       return result;
    }
 
+//N-Ary Level order traversal
+   private  List<List<Integer>> bfs( Node root, List<List<Integer>> result){
+      if( root == null ) return result;
+
+      Queue<Node> queue = new ArrayDeque<>();
+
+      queue.add(root);
+
+      while(!queue.isEmpty()){
+         int numNodes = queue.size();
+         List<Integer> temp = new ArrayList<>();
+
+         for(int i = 0; i<numNodes; i++ ){
+            Node node = queue.poll();
+            temp.add(node.val);
+            for(Node child : node.children){
+               queue.add(child);
+            }
+
+         }
+         result.add(temp);
+      }
+      return result;
+   }
+
 
    class TreeNode {
       int value;
@@ -100,4 +125,20 @@ public class TreeLevelTraversal {
          left = null;
       }
    }
+
+   class Node {
+      public int val;
+      public List<Node> children;
+
+      public Node() {}
+
+      public Node(int _val) {
+         val = _val;
+      }
+
+      public Node(int _val, List<Node> _children) {
+         val = _val;
+         children = _children;
+      }
+   };
 }
