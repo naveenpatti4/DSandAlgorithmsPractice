@@ -1,20 +1,49 @@
 package DSandAlgorithmsPractice.practice.sorting;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.PriorityQueue;
 
 public class MergeKSortedArrays {
 
    public static void main(String[] args) {
-      int[][] array2 = new int[][]{{0,5,15},{30,10,20}};
+      int[][] array2 = new int[][]{
+              {1000, 50, 15},
+              {100, 20, 2},
+              {10, 9, 6, 5, 1}};
       //[[0, 30],[5, 10],[15, 20]]
-      System.out.println(mergeKSortedArrays(array2));
+      Arrays.stream(mergeKSortedArrays(array2)).forEach(System.out::println);
    }
 
+   //merge K sorter preserving order i.e increasing or decreasing
    private static int[] mergeKSortedArrays(int[][] array) {
-      int[] newSortedArray = new int[Integer.MAX_VALUE];
-      PriorityQueue<int[][]> priorityQueue = new PriorityQueue();
-      while (!priorityQueue.isEmpty()){
+      int size = 0;
+      PriorityQueue<Integer> pq;
+      boolean asc = true;
+      int m = array.length-1;
+      int n = array[0].length-1;
+      for(int i=0;i<=m;i++){
+         if(array[i][n] < array[i][0]){
+            asc = false;
+         }
+      }
+      if (asc){
+         pq = new PriorityQueue();
+      } else{
+         pq = new PriorityQueue<>(Collections.reverseOrder());
+      }
 
+      for (int row = 0; row < array.length; row++) {
+         for (int col = 0; col < array[row].length; col++) {
+            pq.offer(array[row][col]);
+            size++;
+         }
+      }
+
+      int[] newSortedArray = new int[size];
+      int res = 0;
+      while (!pq.isEmpty()) {
+        newSortedArray[res++] = pq.poll();
       }
 
       return newSortedArray;
